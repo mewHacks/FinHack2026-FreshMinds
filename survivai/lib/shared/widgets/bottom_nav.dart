@@ -31,7 +31,7 @@ class AppBottomNav extends StatelessWidget {
             children: [
               _NavItem(icon: Icons.home_rounded, label: 'HOME', index: 0, current: currentIndex),
               _NavItem(icon: Icons.warning_amber_rounded, label: 'EMERGENCY', index: 1, current: currentIndex),
-              _NavItem(icon: Icons.credit_card_rounded, label: 'LOAN', index: 2, current: currentIndex),
+              _NavItem(icon: Icons.tips_and_updates_rounded, label: 'NUDGES', index: 2, current: currentIndex),
               _NavItem(icon: Icons.receipt_long_rounded, label: 'HISTORY', index: 3, current: currentIndex),
               _NavItem(icon: Icons.person_rounded, label: 'PROFILE', index: 4, current: currentIndex),
             ],
@@ -55,7 +55,7 @@ class _NavItem extends StatelessWidget {
     final isActive = index == current;
     return GestureDetector(
       onTap: () {
-        const routes = ['/home', '/emergency', '/card', '/transactions', '/settings'];
+        const routes = ['/home', '/emergency', '/nudges', '/transactions', '/settings'];
         if (!isActive) context.go(routes[index]);
       },
       child: AnimatedContainer(

@@ -7,11 +7,6 @@ import 'features/onboarding/screens/welcome_screen.dart';
 import 'features/onboarding/screens/consent_screen.dart';
 import 'features/dashboard/screens/home_screen.dart';
 import 'features/emergency/screens/emergency_screen.dart';
-import 'features/ecl/screens/ecl_apply_screen.dart';
-import 'features/ecl/screens/ecl_consent_screen.dart';
-import 'features/ecl/screens/ecl_processing_screen.dart';
-import 'features/ecl/screens/ecl_result_screen.dart';
-import 'features/card/screens/mcc_card_screen.dart';
 import 'features/transactions/screens/transactions_screen.dart';
 import 'features/nudges/screens/nudges_screen.dart';
 import 'features/settings/screens/settings_screen.dart';
@@ -23,11 +18,6 @@ final _router = GoRouter(
     GoRoute(path: '/onboarding/consent', builder: (_, __) => const ConsentScreen()),
     GoRoute(path: '/home', builder: (_, __) => const HomeScreen()),
     GoRoute(path: '/emergency', builder: (_, __) => const EmergencyScreen()),
-    GoRoute(path: '/ecl/apply', builder: (_, __) => const EclApplyScreen()),
-    GoRoute(path: '/ecl/consent', builder: (_, __) => const EclConsentScreen()),
-    GoRoute(path: '/ecl/processing', builder: (_, __) => const EclProcessingScreen()),
-    GoRoute(path: '/ecl/result', builder: (_, __) => const EclResultScreen()),
-    GoRoute(path: '/card', builder: (_, __) => const MccCardScreen()),
     GoRoute(path: '/transactions', builder: (_, __) => const TransactionsScreen()),
     GoRoute(path: '/nudges', builder: (_, __) => const NudgesScreen()),
     GoRoute(path: '/settings', builder: (_, __) => const SettingsScreen()),

@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.clients.sagemaker_client import predict_spending
 from app.logic.survival import compute_survival
@@ -7,6 +8,13 @@ from app.settings import Settings
 
 app = FastAPI(title="SurvivAI API")
 settings = Settings()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")

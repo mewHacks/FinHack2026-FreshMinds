@@ -39,11 +39,6 @@ class HomeScreen extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildListDelegate([
                 const SizedBox(height: 20),
-                // Auto-triggered emergency banner
-                if (context.watch<AppProvider>().emergencyAutoTriggered) ...[
-                  _EmergencyAutoBanner(),
-                  const SizedBox(height: 16),
-                ],
                 // Today's nudge
                 if (nudges.isNotEmpty) ...[
                   _NudgeCard(nudge: nudges.first),
@@ -257,59 +252,6 @@ class _HomeHeader extends StatelessWidget {
   }
 }
 
-class _EmergencyAutoBanner extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => context.go('/emergency'),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFFB71C1C), Color(0xFFE53935)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.red.withOpacity(0.4),
-              blurRadius: 16,
-              spreadRadius: 2,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 48,
-              height: 48,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(Icons.warning_amber_rounded, color: Colors.white, size: 26),
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('EMERGENCY MODE ACTIVATED', style: AppTypography.labelCaps.copyWith(color: Colors.white.withOpacity(0.85), fontSize: 10)),
-                  const SizedBox(height: 4),
-                  Text('Your survival score is critically low. Emergency Credit Lifeline is now available.', style: AppTypography.bodySm.copyWith(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13)),
-                ],
-              ),
-            ),
-            const SizedBox(width: 8),
-            const Icon(Icons.chevron_right_rounded, color: Colors.white, size: 24),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class _NudgeCard extends StatelessWidget {
   final dynamic nudge;
@@ -393,19 +335,19 @@ class _QuickActions extends StatelessWidget {
         const SizedBox(width: 10),
         Expanded(
           child: _ActionButton(
-            icon: Icons.credit_card_rounded,
-            label: 'ECL\nCard',
+            icon: Icons.lightbulb_rounded,
+            label: 'Daily\nNudges',
             color: AppColors.primary,
-            onTap: () => context.go('/card'),
+            onTap: () => context.go('/nudges'),
           ),
         ),
         const SizedBox(width: 10),
         Expanded(
           child: _ActionButton(
-            icon: Icons.lightbulb_rounded,
-            label: 'Daily\nNudges',
+            icon: Icons.policy_rounded,
+            label: 'B40\nBenefits',
             color: AppColors.primary,
-            onTap: () => context.go('/nudges'),
+            onTap: () => context.go('/emergency'),
           ),
         ),
       ],
