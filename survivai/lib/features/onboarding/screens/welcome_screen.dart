@@ -37,14 +37,10 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     return Scaffold(
       body: Stack(
         children: [
-          // Background gradient
+          // Background
           Container(
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [AppColors.primary, Color(0xFF0052CC)],
-              ),
+              color: Color(0xFF0066FF),
             ),
           ),
           // Decorative circles
@@ -79,7 +75,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 48),
+                  const SizedBox(height: 20),
                   // TNG badge
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -97,7 +93,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       ),
                     ),
                   ),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 20),
                   FadeTransition(
                     opacity: _fadeAnim,
                     child: SlideTransition(
@@ -105,52 +101,82 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Surviv',
-                            style: AppTypography.headlineXl.copyWith(
-                              color: Colors.white,
-                              fontSize: 52,
-                              height: 1.0,
-                            ),
-                          ),
                           Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                'AI',
-                                style: AppTypography.headlineXl.copyWith(
-                                  color: AppColors.secondary,
-                                  fontSize: 52,
-                                  height: 1.0,
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 6),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.secondary,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Text(
-                                    'BETA',
-                                    style: AppTypography.labelCaps.copyWith(
-                                      color: AppColors.primary,
-                                      fontSize: 8,
+                              Expanded(
+                                child: ScaleTransition(
+                                  scale: _fadeAnim,
+                                  child: RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: 'Surviv',
+                                          style: AppTypography.headlineXl.copyWith(
+                                            color: Colors.white,
+                                            fontSize: 56,
+                                            fontWeight: FontWeight.w800,
+                                            height: 1.0,
+                                            letterSpacing: -1.5,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: 'AI',
+                                          style: AppTypography.headlineXl.copyWith(
+                                            color: AppColors.secondary,
+                                            fontSize: 56,
+                                            fontWeight: FontWeight.w800,
+                                            height: 1.0,
+                                            letterSpacing: -1.5,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
+                              const SizedBox(width: 12),
+                              ScaleTransition(
+                                scale: _fadeAnim,
+                                child: Image.asset(
+                                  'assets/logo.png',
+                                  width: 80,
+                                  height: 80,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
                             ],
                           ),
-                          const SizedBox(height: 16),
-                          Text(
-                            'Your financial survival coach.\nKnow your runway. Extend your life.',
-                            style: AppTypography.bodyBase.copyWith(
-                              color: Colors.white.withOpacity(0.75),
-                              height: 1.6,
-                            ),
+                          const SizedBox(height: 24),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFFE921),
+                                ),
+                                child: Text(
+                                  'Your financial survival coach.',
+                                  style: AppTypography.headlineMd.copyWith(
+                                    color: const Color(0xFF2353CE),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
+                                    height: 1.4,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                'Know your runway. Extend your life.',
+                                style: AppTypography.headlineMd.copyWith(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w800,
+                                  height: 1.4,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppTheme {
+  static const List<String> _fontFallbacks = <String>[
+    'Noto Sans',
+    'Arial Unicode MS',
+    'sans-serif',
+  ];
+
   static ThemeData get theme {
     return ThemeData(
       useMaterial3: true,
@@ -23,7 +28,8 @@ class AppTheme {
         onError: AppColors.onError,
       ),
       scaffoldBackgroundColor: AppColors.surface,
-      textTheme: GoogleFonts.interTextTheme(),
+      fontFamily: 'Inter',
+      fontFamilyFallback: _fontFallbacks,
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.surface,
         elevation: 0,
@@ -41,7 +47,9 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40),
           ),
-          textStyle: GoogleFonts.outfit(
+          textStyle: const TextStyle(
+            fontFamily: 'Outfit',
+            fontFamilyFallback: _fontFallbacks,
             fontSize: 16,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.2,

@@ -65,6 +65,16 @@ class _SurvivalScoreRingState extends State<SurvivalScoreRing>
       child: Stack(
         alignment: Alignment.center,
         children: [
+          // White circle background
+          Container(
+            width: widget.size,
+            height: widget.size,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+          ),
+          // Survival score ring on top
           AnimatedBuilder(
             animation: _animation,
             builder: (_, __) => CustomPaint(
@@ -76,6 +86,7 @@ class _SurvivalScoreRingState extends State<SurvivalScoreRing>
               ),
             ),
           ),
+          // Text content
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [

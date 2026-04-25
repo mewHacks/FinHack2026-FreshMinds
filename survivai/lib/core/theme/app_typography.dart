@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppTypography {
-  static TextStyle headlineXl = GoogleFonts.outfit(
+  static const List<String> _fallbackFamilies = <String>[
+    'Noto Sans',
+    'Arial Unicode MS',
+    'sans-serif',
+  ];
+
+  static TextStyle headlineXl = const TextStyle(
+    fontFamily: 'Outfit',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 48,
     fontWeight: FontWeight.w800,
     height: 1.1,
@@ -11,7 +18,9 @@ class AppTypography {
     color: AppColors.onSurface,
   );
 
-  static TextStyle headlineLg = GoogleFonts.outfit(
+  static TextStyle headlineLg = const TextStyle(
+    fontFamily: 'Outfit',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 38,
     fontWeight: FontWeight.w700,
     height: 1.2,
@@ -19,42 +28,54 @@ class AppTypography {
     color: AppColors.onSurface,
   );
 
-  static TextStyle headlineMd = GoogleFonts.outfit(
+  static TextStyle headlineMd = const TextStyle(
+    fontFamily: 'Outfit',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 28,
     fontWeight: FontWeight.w700,
     height: 1.2,
     color: AppColors.onSurface,
   );
 
-  static TextStyle headlineSm = GoogleFonts.outfit(
+  static TextStyle headlineSm = const TextStyle(
+    fontFamily: 'Outfit',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 20,
     fontWeight: FontWeight.w700,
     height: 1.3,
     color: AppColors.onSurface,
   );
 
-  static TextStyle bodyBold = GoogleFonts.inter(
+  static TextStyle bodyBold = const TextStyle(
+    fontFamily: 'Inter',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 17,
     fontWeight: FontWeight.w700,
     height: 1.5,
     color: AppColors.onSurface,
   );
 
-  static TextStyle bodyBase = GoogleFonts.inter(
+  static TextStyle bodyBase = const TextStyle(
+    fontFamily: 'Inter',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 15,
     fontWeight: FontWeight.w500,
     height: 1.6,
     color: AppColors.onSurface,
   );
 
-  static TextStyle bodySm = GoogleFonts.inter(
+  static TextStyle bodySm = const TextStyle(
+    fontFamily: 'Inter',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 13,
     fontWeight: FontWeight.w400,
     height: 1.5,
     color: AppColors.onSurfaceVariant,
   );
 
-  static TextStyle labelCaps = GoogleFonts.outfit(
+  static TextStyle labelCaps = const TextStyle(
+    fontFamily: 'Outfit',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 10,
     fontWeight: FontWeight.w900,
     height: 1.0,
@@ -62,7 +83,9 @@ class AppTypography {
     color: AppColors.onSurfaceVariant,
   );
 
-  static TextStyle labelMd = GoogleFonts.inter(
+  static TextStyle labelMd = const TextStyle(
+    fontFamily: 'Inter',
+    fontFamilyFallback: _fallbackFamilies,
     fontSize: 13,
     fontWeight: FontWeight.w600,
     height: 1.4,

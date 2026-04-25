@@ -15,6 +15,35 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  String _currentLanguage = 'EN';
+
+  Future<void> _changeLanguage(String language) async {
+    try {
+      // TODO: Replace with actual backend API call to Lambda
+      // final response = await http.post(
+      //   Uri.parse('$BACKEND_URL/api/language-preference'),
+      //   headers: {'Content-Type': 'application/json'},
+      //   body: jsonEncode({'language': language}),
+      // );
+
+      setState(() => _currentLanguage = language);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            language == 'EN' ? 'Language changed to English' : 'Bahasa Malaysia dipilih',
+            style: AppTypography.bodyBase.copyWith(color: Colors.white),
+          ),
+          backgroundColor: AppColors.primary,
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error changing language: $e')),
+      );
+    }
+  }
+
   void _showUpdateSalaryDialog(BuildContext context, AppProvider provider) {
     final salaryController = TextEditingController(
       text: provider.user.monthlyIncome.toStringAsFixed(0),
@@ -207,6 +236,87 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             },
                             activeColor: AppColors.error,
                             activeTrackColor: AppColors.error.withOpacity(0.2),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                // Language preference
+                GlassCard(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Preferences', style: AppTypography.headlineSm),
+                      const SizedBox(height: 14),
+                      Row(
+                        children: [
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: AppColors.primaryContainer,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.language_rounded, color: AppColors.primary, size: 20),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Language', style: AppTypography.bodyBold),
+                                Text(
+                                  _currentLanguage == 'EN' ? 'English' : 'Bahasa Malaysia',
+                                  style: AppTypography.bodySm.copyWith(color: AppColors.onSurfaceVariant),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.primaryContainer,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () => _changeLanguage('EN'),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                    decoration: BoxDecoration(
+                                      color: _currentLanguage == 'EN' ? AppColors.primary : Colors.transparent,
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    child: Text(
+                                      'EN',
+                                      style: AppTypography.bodyBold.copyWith(
+                                        color: _currentLanguage == 'EN' ? Colors.white : AppColors.primary,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () => _changeLanguage('BM'),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                    decoration: BoxDecoration(
+                                      color: _currentLanguage == 'BM' ? AppColors.primary : Colors.transparent,
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    child: Text(
+                                      'BM',
+                                      style: AppTypography.bodyBold.copyWith(
+                                        color: _currentLanguage == 'BM' ? Colors.white : AppColors.primary,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
