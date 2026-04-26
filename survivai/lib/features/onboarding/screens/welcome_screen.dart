@@ -138,11 +138,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                               const SizedBox(width: 12),
                               ScaleTransition(
                                 scale: _fadeAnim,
-                                child: Image.asset(
-                                  'assets/logo.png',
+                                child: Container(
                                   width: 80,
                                   height: 80,
-                                  fit: BoxFit.contain,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.secondary,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(Icons.shield_rounded, color: AppColors.primary, size: 40),
                                 ),
                               ),
                             ],
